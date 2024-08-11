@@ -5,7 +5,7 @@ export default defineConfig({
   build: {
     rollupOptions: {
       output: {
-        assetFileNames: 'style/style.css', // Anpassung des Namensschemas
+        assetFileNames: 'style/[name][extname]', // Speichert CSS-Datei ohne Hash
       },
     },
   },
