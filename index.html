@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>JokeApp</title>
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <link rel="stylesheet" href="style.css">
+  </head>
+  <body>
+    <div id="app">
+      <header>
+        <h1>JokeApp</h1>
+      </header>
+      
+      <main>
+        <section class="jokes">
+          <article>
+            <h5>Jokes</h5>
+          </article>
+          <div class="jokes__buttons">
+            <button class="button button--next">Next</button>
+            <button class="button button--save">Save</button>
+          </div>
+        </section>
+
+        <section class="saved-jokes">
+          <div class="saved-jokes__view">
+            <button class="button button--unsave">Unsave</button>
+          </div>
+        </section>
+      </main>
+    </div>
+    
+    <script type="module" src="/main.js"></script>
+  </body>
+</html>

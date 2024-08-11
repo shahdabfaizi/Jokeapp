@@ -1,0 +1,122 @@
+$primary-color: #003840;
+$secondary-color: #00a896;
+$text-color: #ffffff;
+$button-hover-color: #028090;
+$background-color: #f4f4f9;
+$border-radius: 5px;
+
+
+body {
+  font-family: Arial, sans-serif;
+  background-color: $background-color;
+  color: $primary-color;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+#app {
+  width: 100%;
+  max-width: 600px;
+  background-color: $primary-color;
+  padding: 20px;
+  border-radius: $border-radius;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  text-align: center;
+}
+
+header {
+  margin-bottom: 20px;
+
+  h1 {
+    color: $text-color;
+    font-size: 2.5rem;
+    margin: 0;
+  }
+}
+
+main {
+  .jokes, .saved-jokes {
+    margin-bottom: 20px;
+
+    h5 {
+      font-size: 1.5rem;
+      color: $text-color;
+      margin-bottom: 10px;
+    }
+
+    &__buttons {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+
+      .button {
+        padding: 10px 20px;
+        background-color: $secondary-color;
+        border: none;
+        color: $text-color;
+        cursor: pointer;
+        font-size: 1rem;
+        border-radius: $border-radius;
+        transition: background-color 0.3s;
+
+        &:hover {
+          background-color: $button-hover-color;
+        }
+
+        &--next {
+          background-color: lighten($secondary-color, 10%);
+        }
+
+        &--save {
+          background-color: darken($secondary-color, 10%);
+        }
+
+        &--unsave {
+          background-color: #e76f51;
+          &:hover {
+            background-color: darken(#e76f51, 10%);
+          }
+        }
+      }
+    }
+  }
+
+  .saved-jokes__view {
+    display: flex;
+    justify-content: center;
+
+    .button--unsave {
+      padding: 10px 20px;
+      font-size: 1rem;
+    }
+  }
+}
+
+@media (max-width: 600px) {
+  #app {
+    padding: 15px;
+  }
+
+  header {
+    h1 {
+      font-size: 2rem;
+    }
+  }
+
+  main {
+    .jokes, .saved-jokes {
+      &__buttons, &__view {
+        flex-direction: column;
+
+        .button {
+          width: 100%;
+          margin-bottom: 10px;
+        }
+      }
+    }
+  }
+}
