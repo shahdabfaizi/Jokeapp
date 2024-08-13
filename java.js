@@ -2,7 +2,7 @@ import "./style.scss";
 
 let currentJoke = "";
 
-async function joke() {
+export async function joke() {
   try {
     const response = await fetch("https://witzapi.de/api/joke");
     const result = await response.json();
@@ -24,7 +24,7 @@ function generateId() {
   return newId.toString();
 }
 
-function saveJoke() {
+export function saveJoke() {
   if (currentJoke) {
     let savedJokes = JSON.parse(localStorage.getItem("savedJokes")) || [];
 
@@ -69,7 +69,7 @@ function displaySavedJokes() {
   }
 }
 
-function unsaveJoke(id) {
+export function unsaveJoke(id) {
   let savedJokes = JSON.parse(localStorage.getItem("savedJokes")) || [];
 
   const jokeIndex = savedJokes.findIndex((joke) => joke.id === id);
