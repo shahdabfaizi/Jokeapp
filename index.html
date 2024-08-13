@@ -6,6 +6,12 @@
     <title>JokeApp</title>
     <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <script type="module" src="/java.js"></script>
+    <script type="module">
+      import { joke, unsaveJoke, saveJoke } from "./java.js";
+      window.joke = joke;
+      window.unsaveJoke = unsaveJoke;
+      window.saveJoke = saveJoke;
+    </script>
   </head>
   <body>
     <div id="app">
