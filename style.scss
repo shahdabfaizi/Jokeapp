@@ -1,30 +1,19 @@
-$primary-color: #003840;
-$secondary-color: #00a896;
-$text-color: #ffffff;
-$button-hover-color: #028090;
-$background-color: #f4f4f9;
-$border-radius: 5px;
-
-
 body {
   font-family: Arial, sans-serif;
-  background-color: $background-color;
-  color: $primary-color;
+  background-color: #011f26;
+  color: #ffffff;
   margin: 0;
   padding: 0;
   display: flex;
   justify-content: center;
   align-items: center;
   height: 100vh;
+  overflow: hidden;
 }
 
 #app {
   width: 100%;
   max-width: 600px;
-  background-color: $primary-color;
-  padding: 20px;
-  border-radius: $border-radius;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
   text-align: center;
 }
 
@@ -32,66 +21,124 @@ header {
   margin-bottom: 20px;
 
   h1 {
-    color: $text-color;
+    color: #ffffff;
     font-size: 2.5rem;
     margin: 0;
   }
 }
 
 main {
-  .jokes, .saved-jokes {
+  .jokes,
+  .saved-jokes {
     margin-bottom: 20px;
+  }
 
-    h5 {
-      font-size: 1.5rem;
-      color: $text-color;
-      margin-bottom: 10px;
-    }
+  h5 {
+    font-size: 1.5rem;
+    color: #ffffff;
+    margin-bottom: 10px;
+  }
 
-    &__buttons {
-      display: flex;
-      justify-content: center;
-      gap: 10px;
+  .jokes__buttons,
+  .saved-jokes__buttons {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
 
-      .button {
-        padding: 10px 20px;
-        background-color: $secondary-color;
-        border: none;
-        color: $text-color;
-        cursor: pointer;
-        font-size: 1rem;
-        border-radius: $border-radius;
-        transition: background-color 0.3s;
+    .button {
+      padding: 10px 20px;
+      border: none;
+      color: #ffffff;
+      cursor: pointer;
+      font-size: 1rem;
+      border-radius: 5px;
+      transition: background-color 0.3s, transform 0.2s;
+      position: relative;
+      overflow: hidden;
+      background: rgba(60, 162, 162, 0.6);
+
+      &--next {
+        background-color: #03a688;
+      }
+
+      &--save {
+        background-color: #026873;
+      }
+
+      &--unsave {
+        background-color: #e76f51;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 
         &:hover {
-          background-color: $button-hover-color;
+          background-color: #e14a24;
+          transform: translateY(-3px);
         }
 
-        &--next {
-          background-color: lighten($secondary-color, 10%);
+        &:focus {
+          outline: none;
+          box-shadow: 0 0 0 2px rgba(255, 105, 180, 0.5);
         }
 
-        &--save {
-          background-color: darken($secondary-color, 10%);
+        &:active {
+          transform: translateY(1px);
         }
+      }
 
-        &--unsave {
-          background-color: #e76f51;
-          &:hover {
-            background-color: darken(#e76f51, 10%);
-          }
-        }
+      &:hover {
+        background-color: #028090;
+        transform: translateY(-3px);
+      }
+
+      &:active {
+        transform: translateY(1px);
       }
     }
   }
 
   .saved-jokes__view {
-    display: flex;
-    justify-content: center;
+    max-height: 50vh;
+    overflow-y: auto;
+    border-radius: 5px;
+  }
+
+  .saved-joke {
+    background-color: #025e73;
+    border-radius: 5px;
+    padding: 10px;
+    margin-bottom: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    color: #ffffff;
+
+    p {
+      margin: 0;
+      font-size: 1rem;
+    }
 
     .button--unsave {
-      padding: 10px 20px;
+      margin-top: 10px;
+      padding: 12px 100px;
+      background-color: #b44865;
+      border: none;
+      border-radius: 4px;
+      color: #ffffff;
       font-size: 1rem;
+      cursor: pointer;
+      transition: background-color 0.3s, transform 0.2s;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+
+      &:hover {
+        background-color: #e55f76;
+        transform: translateY(-2px);
+      }
+
+      &:active {
+        transform: translateY(1px);
+      }
+
+      &:focus {
+        outline: none;
+        box-shadow: 0 0 0 3px rgba(242, 102, 139, 0.3);
+      }
     }
   }
 }
@@ -101,23 +148,19 @@ main {
     padding: 15px;
   }
 
-  header {
-    h1 {
-      font-size: 2rem;
-    }
+  header h1 {
+    font-size: 2rem;
   }
 
   main {
-    .jokes, .saved-jokes {
-      &__buttons, &__view {
-        flex-direction: column;
+    .jokes__buttons,
+    .saved-jokes__buttons {
+      flex-direction: column;
 
-        .button {
-          width: 100%;
-          margin-bottom: 10px;
-        }
+      .button {
+        width: 100%;
+        margin-bottom: 10px;
       }
     }
   }
 }
-
