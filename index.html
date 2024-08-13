@@ -6,12 +6,6 @@
     <title>JokeApp</title>
     <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <script type="module" src="/java.js"></script>
-    <script type="module">
-      import { joke, unsaveJoke, saveJoke } from "./java.js";
-      window.joke = joke;
-      window.unsaveJoke = unsaveJoke;
-      window.saveJoke = saveJoke;
-    </script>
   </head>
   <body>
     <div id="app">
@@ -25,8 +19,8 @@
             <h5 id="jokeText">Wenn du lachen willst, klicke auf 'Next'!</h5>
           </article>
           <div class="jokes__buttons">
-            <button class="button button--next" onclick="joke()">Next</button>
-            <button class="button button--save" onclick="saveJoke()">
+            <button class="button button--next" id="joke">Next</button>
+            <button class="button button--save" id="saveJoke">
               Save it!<span><span></span></span>
             </button>
           </div>

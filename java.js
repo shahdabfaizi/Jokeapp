@@ -2,7 +2,7 @@ import "./style.scss";
 
 let currentJoke = "";
 
-export async function joke() {
+document.getElementById("joke").addEventListener("click", async function () {
   try {
     const response = await fetch("https://witzapi.de/api/joke");
     const result = await response.json();
@@ -15,7 +15,7 @@ export async function joke() {
   } catch (error) {
     console.error("Fehler beim Abrufen des Witzes:", error);
   }
-}
+});
 
 function generateId() {
   let lastId = parseInt(localStorage.getItem("lastId")) || 0;
@@ -24,7 +24,7 @@ function generateId() {
   return newId.toString();
 }
 
-export function saveJoke() {
+document.getElementById("saveJoke").addEventListener("click", function () {
   if (currentJoke) {
     let savedJokes = JSON.parse(localStorage.getItem("savedJokes")) || [];
 
@@ -46,7 +46,7 @@ export function saveJoke() {
   } else {
     console.error("Kein Witz zum Speichern vorhanden.");
   }
-}
+});
 
 function displaySavedJokes() {
   const savedJokesContainer = document.getElementById("savedJokesContainer");
@@ -58,9 +58,9 @@ function displaySavedJokes() {
     const jokeElement = document.createElement("div");
     jokeElement.className = "saved-joke";
     jokeElement.innerHTML = `
-            <p>${joke.text}</p>
-            <button class="button button--unsave" onclick="unsaveJoke('${joke.id}')">Unsave</button>
-        `;
+      <p>${joke.text}</p>
+      <button class="button button--unsave" data-id="${joke.id}">Unsave</button>
+    `;
     savedJokesContainer.appendChild(jokeElement);
   });
 
@@ -69,7 +69,16 @@ function displaySavedJokes() {
   }
 }
 
-export function unsaveJoke(id) {
+document
+  .getElementById("savedJokesContainer")
+  .addEventListener("click", function (event) {
+    if (event.target.classList.contains("button--unsave")) {
+      const id = event.target.getAttribute("data-id");
+      unsaveJoke(id);
+    }
+  });
+
+function unsaveJoke(id) {
   let savedJokes = JSON.parse(localStorage.getItem("savedJokes")) || [];
 
   const jokeIndex = savedJokes.findIndex((joke) => joke.id === id);
@@ -87,4 +96,3 @@ export function unsaveJoke(id) {
 window.onload = function () {
   displaySavedJokes();
 };
-// new
